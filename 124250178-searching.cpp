@@ -23,7 +23,25 @@ int main() {
 	string cari;
 	bool found = false;
 	
-	cout << "====== TOKO BUKU ALGO ======" << endl;
+	cout << "========= TOKO BUKU ALGO =========" << endl;
+	cout << endl;
+	cout << "Selamat Datang di Toko Buku Algo!" << endl;
+	cout << endl;
+	
+	cout << "-----------------" << endl;
+	cout << "| Daftar Buku:\t|" << endl;
+	cout << "-----------------" << endl;
+	cout << "| Algoritma\t|" << endl;
+	cout << "| Bisnis\t|" << endl;
+	cout << "| English\t|" << endl;
+	cout << "| Manajemen\t|" << endl;
+	cout << "| Olahraga\t|" << endl;
+	cout << "| Pancasila\t|" << endl;
+	cout << "| Statistika\t|" << endl;
+	cout << "-----------------" << endl;
+	cout << endl;
+	
+	cout << "Metode Pencarian" << endl;
 	cout << "1. Pencarian Biner" << endl;
 	cout << "2. Pencarian Sekuensial" << endl;
 	cout << "Pilih Pencarian: ";
@@ -115,4 +133,5 @@ int main() {
 	return 0;
 	
 }
+
 
