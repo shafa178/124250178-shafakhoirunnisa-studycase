@@ -67,3 +67,4 @@ int main() {
 	tampilanmhs(nama2, n); // Menampilkan isi array yang sudah diurutkan secara descending
 	
 }
+
