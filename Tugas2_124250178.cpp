@@ -415,31 +415,46 @@ void undoAksi() {
     }
 
     if (aksi == "MASUK") {
-        if (data->diParkiran) {
-            data->diParkiran = false;
-            jumlahParkir--;
-        }
+		if (data->diParkiran) {
+			data->diParkiran = false;
+        	jumlahParkir--;
 
-        cout << "Undo: Kendaraan keluar dari parkiran\n";
-    } else if (aksi == "KELUAR") {
-        if (noPolisiAntrian != "") {
-            Kendaraan* dataAntrian = cariKendaraan(root, noPolisiAntrian);
+        if (!queueKosong()) {
+            string noAntrian;
+            dequeue(noAntrian);
+			
+			Kendaraan* kendaraanAntri = cariKendaraan(root, noAntrian);
 
-            if (dataAntrian != NULL && dataAntrian->diParkiran) {
-                dataAntrian->diParkiran = false;
-                jumlahParkir--;
-
-                enqueueDepan(noPolisiAntrian);
+            if (kendaraanAntri != NULL) {
+                kendaraanAntri->diParkiran = true;
+                jumlahParkir++;
             }
         }
-
-        if (!data->diParkiran && jumlahParkir < kapasitasParkir) {
-            data->diParkiran = true;
-            jumlahParkir++;
-        }
-
-        cout << "Undo: Kendaraan masuk kembali ke parkiran\n";
     }
+		cout << "Undo: Kendaraan masuk dibatalkan\n";
+    } else if (aksi == "KELUAR") {
+
+    if (noPolisiAntrian != "") {
+
+        Kendaraan* dataAntrian =
+            cariKendaraan(root, noPolisiAntrian);
+
+        if (dataAntrian != NULL &&
+            dataAntrian->diParkiran) {
+
+            dataAntrian->diParkiran = false;
+            jumlahParkir--;
+
+            enqueueDepan(noPolisiAntrian);
+        }
+    }
+
+    if (!data->diParkiran) {
+        data->diParkiran = true;
+        jumlahParkir++;
+    }
+		cout << "Undo: Kendaraan keluar dibatalkan\n";
+	}
 }
 
 void tampilAntrian() {
